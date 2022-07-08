@@ -40,6 +40,7 @@ export const AuthProvider = ({ fallback, children }) => {
       setIsLoading(false);
       return { user: data };
     } catch (err) {
+
       const { data } = err.response;
       setUser(null);
       setIsLoading(false);

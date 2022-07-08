@@ -25,8 +25,9 @@ const Signin = () => {
     const { username, password } = values;
     await delay(1000);
     const { error } = await auth.signin(username, password);
+    console.log(error);
     if (error) {
-      toaster.toast("error", error.msg);
+      toaster.toast("error", error.message);
       return;
     }
     navigate("/");

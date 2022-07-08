@@ -17,7 +17,7 @@ const AddNewContact = () => {
       await addContact(username);
       toaster.toast("success", "Contact added");
     } catch (error) {
-      setError(error.response.data.msg);
+      setError(error.response.data.message);
     }
   };
   return (

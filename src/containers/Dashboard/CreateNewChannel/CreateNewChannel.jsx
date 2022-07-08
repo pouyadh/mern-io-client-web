@@ -19,16 +19,11 @@ const CreateNewChannel = ({ onCancel = () => {}, onDone = () => {} }) => {
   const handleSubmit = async (values) => {
     const { name, description, avatarURL, members } = values;
     try {
-      await conversationApi.createChannel({
-        name,
-        description,
-        avatarURL,
-        members: members.map((m) => ({ username: m, role: "user" })),
-      });
+      await conversationApi.createChannel(members,name,description,avatarURL);
       toaster.toast("success", "Channel created.");
       onDone();
     } catch (error) {
-      toaster.toast("error", error.response.data.msg);
+      toaster.toast("error", error.response.data.message);
       onCancel();
     }
   };

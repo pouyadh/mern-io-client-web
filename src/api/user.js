@@ -15,19 +15,23 @@ export const login = async (username, password) => {
 };
 
 export const get = async () => {
-  return await ax.get(`/`);
+  return await ax.get(`/me`);
 };
 
-export const updateAvatar = async (imageUrl) => {
-  return await ax.put(`/me/avatar`, { image: imageUrl });
+export const getUser = async (username) => {
+  return await ax.get(`/${username}`)
+}
+
+export const updateAvatar = async (avatarURL) => {
+  return await ax.put(`/me/avatar`, { avatarURL });
 };
 
-export const addContact = async (username) => {
-  return await ax.post(`/me/contact`, { contact_username: username });
+export const addContact = async (contact_username) => {
+  return await ax.post(`/me/contact`, { contact_username });
 };
 
-export const removeContact = async (username) => {
-  return await ax.delete(`/me/contact/${username}`);
+export const removeContact = async (contact_username) => {
+  return await ax.delete(`/me/contact/${contact_username}`);
 };
 
 export const getContacts = async () => {
